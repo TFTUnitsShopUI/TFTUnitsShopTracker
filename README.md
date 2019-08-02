@@ -1,4 +1,4 @@
-(These are general instructions I've sent to friends so far, not actually proper readme for now)
+(These are general instructions I've sent to friends so far along with an executable file, so not actually proper readme for now)
 
 Have to be on BORDERLESS either 1080p or 1440p.
 
