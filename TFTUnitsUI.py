@@ -1,17 +1,21 @@
-from PyQt5.QtWidgets import QMainWindow, QLabel, QApplication
+from PyQt5.QtWidgets import QMainWindow, QLabel, QApplication, QPushButton
 from PyQt5.QtCore import Qt, QRect, QThread, pyqtSlot, QTimer
 from PyQt5.QtGui import QPixmap
 
 import resolutionInfo
 import sys
 import events
+import unitPickerWindow
 
 #IF RUNNING EXECUTABLE
-_basePath = getattr(sys, '_MEIPASS','.')
-PATH_TO_IMAGE = _basePath + ".\\Assets_Stats_Button.png"
+#_basePath = getattr(sys, '_MEIPASS','.')
+#PATH_TO_IMAGE = _basePath + ".\\Assets_Stats_Button.png"
+#PATH_TO_EXPAND = 
 
 #IF USING COMMAND LINE
-#PATH_TO_IMAGE = "Assets_Stats_Button.png"
+PATH_TO_IMAGE = "Assets_Stats_Button.png"
+PATH_TO_EXPAND = "expand.png"
+
 
 resolutionClass = resolutionInfo.resolutionClass
 timer = None
@@ -23,6 +27,7 @@ def hideLabel(label):
 def showLabel(label):
     label.show()
 
+
 class Overlay(QMainWindow):
 
     def __init__(self):
@@ -31,7 +36,7 @@ class Overlay(QMainWindow):
         #window = QMainWindow()
         self.setGeometry(
                     resolutionClass.SHOP_X, resolutionClass.SHOP_Y,
-                    resolutionClass.CHAMPION_CARD*resolutionInfo.UNITS_IN_SHOP + sum(resolutionClass.SHOP_SPACING),
+                    resolutionClass.CHAMPION_CARD*resolutionInfo.UNITS_IN_SHOP + sum(resolutionClass.SHOP_SPACING) +55,
                     resolutionClass.SHOP_HEIGHT)
 
         #window.setAttribute(Qt.WA_NoSystemBackground, True)
@@ -41,6 +46,8 @@ class Overlay(QMainWindow):
 
         self.setAttribute(Qt.WA_TranslucentBackground)
         #window.setWindowOpacity(0.1)
+        self.compositionWindow = None
+
 
 
         li1 = QLabel(self)
@@ -63,7 +70,20 @@ class Overlay(QMainWindow):
         li5.setGeometry(QRect(resolutionClass.CHAMPION_CARD*4 + sum(resolutionClass.SHOP_SPACING), 0,37,35))
 
         self.labels = [li1, li2, li3, li4, li5]
+
+        expandLabel = QLabel(self)
+        expandPicture = QPixmap(PATH_TO_EXPAND)
+        expandLabel.setPixmap(expandPicture.scaledToHeight(20))
+        expandLabel.setGeometry(QRect(resolutionClass.CHAMPION_CARD*5 + sum(resolutionClass.SHOP_SPACING) + 10, 0,55,55))
+        expandLabel.mousePressEvent = self.showUnitComposition
+
+
+
+        #self.expandButton.setGeometry()
+
         self.show()
+
+
 
         #Start mouse monitor thread
         self.monitorEvents = events.MonitorMouse()
@@ -99,6 +119,17 @@ class Overlay(QMainWindow):
                         self.labels[i].show()
                     else:
                         self.labels[i].hide()
+
+    #Called when the expand button is pressed
+    def showUnitComposition(self, event):
+        if self.compositionWindow is None:
+            self.compositionWindow = unitPickerWindow.compositionWindow()
+            self.compositionWindow.show()
+        else:
+            if self.compositionWindow.isVisible():
+                self.compositionWindow.hide()
+            else:
+                self.compositionWindow.show()
 
 
 def readStartRoundEvent(msg):
