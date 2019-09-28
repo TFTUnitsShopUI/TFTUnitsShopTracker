@@ -29,6 +29,7 @@ def updateUnitsAvailable(myGUISignal):
 
 def _updateUnitsAvailableGUI(signal):
     GUIMessage = ""
+    trackingMessage = ""
     unitNumber = 0
     #Show some sort of on screen uppdate if already have.
     for unitFingerprint in unitsAvailable:
@@ -41,7 +42,18 @@ def _updateUnitsAvailableGUI(signal):
             #hideLabel(myGUISignal, unitNumber)
             #print("             {0}             ".format("0"), end="")
             GUIMessage += "-"
+
+        #Updates for units the user wants to track
+        if unitTracking.notifyTracking(unitFingerprint):
+            #TODO: Eventually/When we have to track more things make better signals.
+            trackingMessage += "Y"
+        else:
+            trackingMessage += "N"
+
         unitNumber += 1
+
+    GUIMessage += trackingMessage
+    print(GUIMessage)
     signal.emit(GUIMessage)
    #print("")
 
@@ -162,21 +174,32 @@ def checkRoundStart(function):
 
         unitsAvailable = findUnits.fingerprintCharacters(res.resolutionClass)
         response = ""
+        trackingMessage = ""
         for i in range(0, len(unitsAvailable)):
             if unitTracking.notifyCheck(unitsAvailable[i]):
                 #Put a symbol on the UI
-                response += "+" 
+                response += "+"
+
                 #print("             {0}             ".format(unitTracking.getAmount(unitFingerprint)), end="")
             else:
-                response += "-"
                 #print("             {0}             ".format("0"), end="")
+                response += "-"
+
+            #Updates for units the user wants to track
+            if unitTracking.notifyTracking(unitsAvailable[i]):
+                #TODO: Eventually/When we have to track more things make better signals.
+                trackingMessage += "Y"
+            else:
+                trackingMessage += "N"
+
+        response += trackingMessage
 
         #Either was doing something on foreground and tabbed in so shorter timer
         #or first round so shorter timer.
         if not pyautogui.pixelMatchesColor(res.resolutionClass.START_TIMER_PIXEL[0],
             res.resolutionClass.START_TIMER_PIXEL[1], (233,187,27), tolerance=5):
 
-            response += "l"
+            response += "shorter"
         function(response)
 
     else:
@@ -188,7 +211,6 @@ def checkShopColour(mouseMonitor):
         math.floor((res.resolutionClass.REFRESH_BUTTON[0][1] + res.resolutionClass.REFRESH_BUTTON[1][1])/2))
     if pyautogui.pixelMatchesColor(shopMiddle[0], shopMiddle[1], SELLING_BACKGROUND_COLOUR, tolerance=1):
         mouseMonitor.lastMouseClick = "clicked unit"
-
 
 if __name__ == "__main__":
     # thread = Thread(target = pyQTPractice.run)
