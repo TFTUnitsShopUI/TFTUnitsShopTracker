@@ -1,0 +1,62 @@
+Aatrox 
+Ahri
+Akali
+Anivia
+Ashe
+AurelionSol
+Blitzcrank
+Brand
+Braum
+Camille
+Chogath
+Darius : ((173, 151, 112), (81, 47, 56), (9, 8, 15))
+Draven
+Elise
+Evelynn
+Fiora : ((66, 48, 49), (141, 62, 76), (59, 54, 71))
+Gangplank
+Garen : ((57, 41, 35), (225, 172, 166), (16, 8, 8))
+Gnar
+Graves : ((23, 46, 51), (28, 17, 10), (37, 28, 14))
+Jayce
+Jinx
+Kaisa
+Karthus
+Kassadin : ((64, 37, 64), (63, 45, 84), (14, 23, 42))
+Katarina
+Kayle
+Kennen : ((105, 115, 152), (172, 74, 189), (21, 17, 62))
+Khazix : ((46, 21, 46), (66, 18, 78), (32, 16, 33))
+Kindred
+Leona
+Lissandra
+Lucian
+Lulu
+MissFortune
+Mordekaiser
+Morgana
+Nidalee
+Pantheon
+Poppy
+Pyke
+RekSai
+Rengar
+Sejuani
+Shen : ((33, 28, 33), (53, 55, 72), (16, 14, 20))
+Shyvana
+Swain
+Tristana
+TwistedFate
+Varus : ((39, 50, 63), (60, 48, 70), (29, 16, 34))
+Vayne
+Veigar
+Vi
+Volibear
+Warwick : ((18, 19, 10), (4, 12, 8), (58, 80, 51))
+Yasuo
+Zed
+((27, 29, 21), (42, 41, 36), (35, 48, 39))
+((66, 44, 49), (106, 122, 146), (26, 15, 24))
+((24, 21, 18), (78, 61, 56), (86, 115, 86))
+((87, 66, 59), (33, 17, 25), (24, 21, 23))
+((42, 19, 42), (63, 16, 74), (30, 17, 32))
