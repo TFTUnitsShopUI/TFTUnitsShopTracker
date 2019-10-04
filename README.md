@@ -1,4 +1,15 @@
-(These are general instructions I've sent to friends so far along with an executable file, so not actually proper readme for now)
+Overlay for Teamfight Tactics that keeps track of your purchased units and allows you
+to mark units that you wish to purchase as a way of building your composition.
+
+Additional files required to run, either:
+    - https://mega.nz/#!B1g2SYSb!4W6Ggz1skLFhLtpht8jvS2XhrmH3s9lE9F8GoHPEh1E
+
+    - Manually download Riot's Data Dragon file and go to /(version number)/img/champion
+    and put the champion folder into the same directory as the other files.
+
+
+
+(These are general instructions I've sent to friends so far, not actually proper readme for now)
 
 Have to be on BORDERLESS either 1080p or 1440p.
 
@@ -13,6 +24,3 @@ How to use:
 
 For now this overlay puts a small green symbol on the top left of the champion
 cards in the shop IFF you have previously bought the champion.
-
-Addendum: It would be helpfulif you see a champion that you have NOT bought but is marked,
- screenshot it or write down the champion's name and position in the shop (1-5) and tell me.
