@@ -19,7 +19,7 @@ def getChampionsAsPixmap(path="championList.txt"):
     with open(path, 'r') as file:
         for name in file:
             strippedName = name.strip('\n')
-            champPixMap = QPixmap("championPictures\\" + strippedName + "_0.jpg")
+            champPixMap = QPixmap("champion\\" + strippedName + ".png")
             pixmaps.append((strippedName, champPixMap.scaledToHeight(50)))
     return pixmaps
 
