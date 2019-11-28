@@ -1,3 +1,5 @@
+TFT Set 2 has released and an API for TFT is now accessible (Not for shop data which is luckily already implemented) so this will be updated shortly.
+
 Overlay for Teamfight Tactics that keeps track of your purchased units and allows you
 to mark units that you wish to purchase as a way of building your composition.
 
